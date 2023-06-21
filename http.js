@@ -4,7 +4,18 @@ const port = 8000;
 
 http
   .createServer((req, res) => {
-    res.write("Hola Mundo");
+    const headerHola = req.headers.hola;
+    console.log(headerHola);
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+
+    const data = {
+      id: 1,
+      name: "Edson",
+    };
+
+    res.write(JSON.stringify(data));
+
     res.end();
   })
   .listen(port);
