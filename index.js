@@ -3,12 +3,11 @@ const app = express();
 
 const port = 8000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// Show static content
+app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-  res.send("404 | Page not found");
+  res.sendFile(__dirname + "/public/404.html")
 });
 
 app.listen(port, () => {
