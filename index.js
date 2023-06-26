@@ -3,8 +3,15 @@ const app = express();
 
 const port = 8000;
 
+// Handlebars
+app.set("view engine", "hbs");
+
 // Show static content
 app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/public/404.html");
